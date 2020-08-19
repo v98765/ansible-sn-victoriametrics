@@ -1,0 +1,7 @@
+---
+- name: restart victoria-metrics
+  become: true
+  systemd:
+    daemon_reload: true
+    name: victoria-metrics
+    state: restarted

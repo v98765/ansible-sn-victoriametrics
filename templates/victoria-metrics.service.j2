@@ -1,0 +1,22 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=victoria-metrics
+After=network-online.target
+
+[Service]
+Type=simple
+User=victoriametrics
+Group=victoriametrics
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStart={{ victoriametrics_binary_install_dir }}/victoria-metrics-prod \
+  -storageDataPath {{ victoriametrics_db_dir }} {% for flag, flag_value in victoriametrics_config_flags_extra.items() %}\
+  -{{ flag }}{% if flag_value %} {{ flag_value }}{% endif %} {% endfor %}
+
+SyslogIdentifier=victoria-metrics
+KillMode=control-group
+Restart=on-failure
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

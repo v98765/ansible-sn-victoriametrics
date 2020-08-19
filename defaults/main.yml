@@ -1,0 +1,8 @@
+---
+victoriametrics_version: 1.39.4
+victoriametrics_skip_install: false
+victoriametrics_db_dir: /var/lib/vm
+victoriametrics_binary_install_dir: /usr/local/bin
+victoriametrics_config_flags_extra:
+ retentionPeriod: 3
+ http.maxGracefulShutdownDuration: 10s

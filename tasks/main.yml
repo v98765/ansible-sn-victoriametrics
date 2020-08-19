@@ -1,0 +1,20 @@
+---
+- include: preflight.yml
+  tags:
+    - victoriametrics_install
+    - victoriametrics_run
+
+- include: install.yml
+  become: true
+  tags:
+    - victoriametrics_install
+
+- name: ensure victoria-metrics service is started and enabled
+  become: true
+  systemd:
+    daemon_reload: true
+    name: victoria-metrics
+    state: started
+    enabled: true
+  tags:
+    - victoriametrics_run
