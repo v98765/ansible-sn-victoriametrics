@@ -1,5 +1,5 @@
 ---
-victoriametrics_version: 1.40.1
+victoriametrics_version: 1.44.0
 victoriametrics_skip_install: false
 victoriametrics_db_dir: /var/lib/vm
 victoriametrics_binary_install_dir: /usr/local/bin
